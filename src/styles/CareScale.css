@@ -1,0 +1,23 @@
+.care-scale {
+  position: relative;
+  cursor: pointer;
+}
+
+.care-scale::before {
+  content: attr(title);
+  text-transform: none;
+  position: absolute;
+  width: max-content;
+  background-color: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: none;
+}
+
+.care-scale:hover::before {
+  display: block;
+  bottom: 100%;
+  left: 50%;
+  z-index: 1040;
+}

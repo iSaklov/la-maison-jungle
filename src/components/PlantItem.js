@@ -1,27 +1,21 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
+import useModal from '../hooks/useModal'
 import CareScale from './CareScale'
+import Modal from './Modal'
 import '../styles/PlantItem.css'
 
 function PlantItem({ cover, name, water, light, price }) {
-  const [isModalVisible, setModalVisible] = useState(false)
-
-  const toggleInfo = useCallback(() => {
-    if (!isModalVisible) {
-      setModalVisible(true)
-    } else {
-      setModalVisible(false)
-    }
-  }, [isModalVisible])
+  const { isShowing, toggle } = useModal()
 
   return (
     <li style={{ cursor: 'pointer' }}>
       <div
         role="button"
         tabIndex={0}
-        onClick={() => toggleInfo()}
+        onClick={toggle}
         onKeyPress={(event) => {
           if (event.key === 'Enter') {
-            toggleInfo()
+            toggle()
           }
         }}
         className="lmj-plant-item"
@@ -37,11 +31,9 @@ function PlantItem({ cover, name, water, light, price }) {
           <CareScale careType="water" scaleValue={water} />
           <CareScale careType="light" scaleValue={light} />
         </div>
-        {isModalVisible && (
-          <div className="modal">
-            `Vous voulez acheter 1 ${name}? Très bon choix 🌱✨`
-          </div>
-        )}
+        <Modal isShowing={isShowing} hide={toggle}>
+          <p>{`Vous voulez acheter 1 ${name}? Très bon choix 🌱✨`}</p>
+        </Modal>
       </div>
     </li>
   )

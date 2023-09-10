@@ -1,6 +1,8 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
+// import useModal from '../hooks/useModal'
 import Sun from '../assets/sun.svg'
 import Water from '../assets/water.svg'
+import '../styles/CareScale.css'
 
 const quantityLabel = {
   1: 'peu',
@@ -8,8 +10,7 @@ const quantityLabel = {
   3: 'beaucoup'
 }
 
-function CareScale({ scaleValue, careType }) {
-  const [isModalVisible, setModalVisible] = useState(false)
+function CareScale({ careType, scaleValue }) {
   const range = [1, 2, 3]
 
   const scaleType =
@@ -19,48 +20,17 @@ function CareScale({ scaleValue, careType }) {
       <img src={Water} alt="water-icon" />
     )
 
-  const handleClick = useCallback(
-    (event) => {
-      event.stopPropagation()
-      if (!isModalVisible) {
-        setModalVisible(true)
-      } else {
-        setModalVisible(false)
-      }
-    },
-    [isModalVisible]
-  )
-
-  const handleKeyPress = useCallback(
-    (event) => {
-      event.stopPropagation()
-      if (event.key === 'Enter') {
-        setModalVisible(true)
-      } else {
-        setModalVisible(false)
-      }
-    },
-    [setModalVisible]
-  )
-
   return (
     <div
-      role="button"
-      tabIndex={0}
-      onClick={handleClick}
-      onKeyPress={handleKeyPress}
-      style={{ cursor: 'pointer' }}
+      title={`Cette plante requiert ${quantityLabel[scaleValue]} ${
+        careType === 'light' ? 'de lumière' : "d'arrosage"
+      }`}
+      className="care-scale"
     >
       {range.map((rangeElem) =>
         scaleValue >= rangeElem ? (
           <span key={rangeElem.toString()}>{scaleType}</span>
         ) : null
-      )}
-      {isModalVisible && (
-        <div className="modal">
-          Cette plante requiert {quantityLabel[scaleValue]}{' '}
-          {careType === 'light' ? 'de lumière' : "d'arrosage"}
-        </div>
       )}
     </div>
   )
