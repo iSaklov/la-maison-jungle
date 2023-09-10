@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -7,10 +7,6 @@ function Cart({ cart, updateCart }) {
     (acc, plantType) => acc + plantType.amount * plantType.price,
     0
   )
-
-  useEffect(() => {
-    alert(`J'aurai ${total}€ à payer 💸`)
-  }, [total])
 
   return isOpen ? (
     <div className="lmj-cart">
@@ -25,8 +21,8 @@ function Cart({ cart, updateCart }) {
         <div>
           <h2>Panier</h2>
           <ul>
-            {cart.map(({ name, price, amount }, index) => (
-              <div key={`${name}-${index}`}>
+            {cart.map(({ name, price, amount }) => (
+              <div key={`${name}-${amount}`}>
                 {name} {price}€ x {amount}
               </div>
             ))}

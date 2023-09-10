@@ -3,6 +3,7 @@ import '../styles/Footer.css'
 
 function Footer() {
   const [inputValue, setInputValue] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   function handleInput(e) {
     setInputValue(e.target.value)
@@ -10,7 +11,11 @@ function Footer() {
 
   function handleBlur() {
     if (!inputValue.includes('@')) {
-      alert("Attention, il n'y a pas d'@, ceci n'est pas une adresse valide 😥")
+      setErrorMessage(
+        "Attention, il n'y a pas d'@, ceci n'est pas une adresse valide 😥"
+      )
+    } else {
+      setErrorMessage('')
     }
   }
 
@@ -26,6 +31,7 @@ function Footer() {
         value={inputValue}
         onBlur={handleBlur}
       />
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </footer>
   )
 }
