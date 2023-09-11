@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from './UI/Button'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -10,13 +11,9 @@ function Cart({ cart, updateCart }) {
 
   return isOpen ? (
     <div className="lmj-cart">
-      <button
-        type="button"
-        className="lmj-cart-toggle-button"
-        onClick={() => setIsOpen(false)}
-      >
+      <Button variant="secondary" onClickHandler={() => setIsOpen(false)}>
         Fermer
-      </button>
+      </Button>
       {cart.length > 0 ? (
         <div>
           <h2>Panier</h2>
@@ -28,9 +25,9 @@ function Cart({ cart, updateCart }) {
             ))}
           </ul>
           <h3>Total :{total}€</h3>
-          <button type="button" onClick={() => updateCart([])}>
+          <Button variant="secondary" onClickHandler={() => updateCart([])}>
             Vider le panier
-          </button>
+          </Button>
         </div>
       ) : (
         <div>Votre panier est vide</div>
@@ -38,13 +35,9 @@ function Cart({ cart, updateCart }) {
     </div>
   ) : (
     <div className="lmj-cart-closed">
-      <button
-        type="button"
-        className="lmj-cart-toggle-button"
-        onClick={() => setIsOpen(true)}
-      >
+      <Button variant="primary" onClickHandler={() => setIsOpen(true)}>
         Ouvrir le Panier
-      </button>
+      </Button>
     </div>
   )
 }

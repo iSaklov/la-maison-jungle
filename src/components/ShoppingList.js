@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import plantList from '../datas/plantList'
 import PlantItem from './PlantItem'
 import Categories from './Categories'
+import Button from './UI/Button'
 import '../styles/ShoppingList.css'
 
 function ShoppingList({ cart, updateCart }) {
@@ -46,9 +47,9 @@ function ShoppingList({ cart, updateCart }) {
                 light={light}
                 price={price}
               />
-              <button type="button" onClick={() => addToCart(name, price)}>
+              <Button variant="primary" onClickHandler={() => addToCart(name, price)}>
                 Ajouter
-              </button>
+              </Button>
             </div>
           ) : null
         )}

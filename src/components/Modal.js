@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Button from './UI/Button'
 import '../styles/Modal.css'
 
 function Modal({ isShowing, hide, children }) {
@@ -16,15 +17,13 @@ function Modal({ isShowing, hide, children }) {
           >
             <div className="modal">
               <div className="modal-header">
-                <button
-                  type="button"
-                  className="modal-close-button"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={hide}
+                <Button
+                  variant="secondary"
+                  onClickHandler={hide}
+                  ariaLabel="Fermer"
                 >
                   <span aria-hidden="true">&times;</span>
-                </button>
+                </Button>
               </div>
               {children}
             </div>

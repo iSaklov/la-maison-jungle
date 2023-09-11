@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './UI/Button'
 import '../styles/Categories.css'
 
 function Categories({ setActiveCategory, categories, activeCategory }) {
@@ -16,9 +17,9 @@ function Categories({ setActiveCategory, categories, activeCategory }) {
           </option>
         ))}
       </select>
-      <button type="button" onClick={() => setActiveCategory('')}>
+      <Button variant="secondary" onClickHandler={() => setActiveCategory('')}>
         Réinitialiser
-      </button>
+      </Button>
     </div>
   )
 }
