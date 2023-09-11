@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Button from './UI/Button'
+import CustomButton from './UI/CustomButton'
 import '../styles/Modal.css'
 
 function Modal({ isShowing, hide, children }) {
@@ -17,13 +17,13 @@ function Modal({ isShowing, hide, children }) {
           >
             <div className="modal">
               <div className="modal-header">
-                <Button
+                <CustomButton
                   variant="secondary"
                   onClickHandler={hide}
                   ariaLabel="Fermer"
                 >
                   <span aria-hidden="true">&times;</span>
-                </Button>
+                </CustomButton>
               </div>
               {children}
             </div>

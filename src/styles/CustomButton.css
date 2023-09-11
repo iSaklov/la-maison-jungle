@@ -11,7 +11,6 @@
   appearance: none;
   display: inline-block;
   cursor: pointer;
-  transition: 0.5s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -36,14 +35,17 @@
   );
   color: white;
   border: 0px;
+  padding: 8px 18px;
   box-shadow: 0px 0px 14px -7px #f09819;
+  transition:
+    background-position 0.5s,
+    color 0.3s;
 }
 
 .btn-primary:hover {
   background-position: right center;
   /* change the direction of the change here */
   color: #fff;
-  text-decoration: none;
 }
 
 /* SECONDARY */

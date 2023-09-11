@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../styles/Button.css'
+import '../../styles/CustomButton.css'
 
-function Button({ variant, onClickHandler, ariaLabel, children }) {
+function CustomButton({ variant, onClickHandler, ariaLabel, children }) {
   return (
     <button
       type="button"
@@ -14,4 +14,4 @@ function Button({ variant, onClickHandler, ariaLabel, children }) {
   )
 }
 
-export default Button
+export default CustomButton

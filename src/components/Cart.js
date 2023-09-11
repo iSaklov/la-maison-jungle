@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from './UI/Button'
+import CustomButton from './UI/CustomButton'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -11,9 +11,9 @@ function Cart({ cart, updateCart }) {
 
   return isOpen ? (
     <div className="lmj-cart">
-      <Button variant="secondary" onClickHandler={() => setIsOpen(false)}>
+      <CustomButton variant="secondary" onClickHandler={() => setIsOpen(false)}>
         Fermer
-      </Button>
+      </CustomButton>
       {cart.length > 0 ? (
         <div>
           <h2>Panier</h2>
@@ -25,9 +25,12 @@ function Cart({ cart, updateCart }) {
             ))}
           </ul>
           <h3>Total :{total}€</h3>
-          <Button variant="secondary" onClickHandler={() => updateCart([])}>
+          <CustomButton
+            variant="secondary"
+            onClickHandler={() => updateCart([])}
+          >
             Vider le panier
-          </Button>
+          </CustomButton>
         </div>
       ) : (
         <div>Votre panier est vide</div>
@@ -35,9 +38,9 @@ function Cart({ cart, updateCart }) {
     </div>
   ) : (
     <div className="lmj-cart-closed">
-      <Button variant="primary" onClickHandler={() => setIsOpen(true)}>
+      <CustomButton variant="primary" onClickHandler={() => setIsOpen(true)}>
         Ouvrir le Panier
-      </Button>
+      </CustomButton>
     </div>
   )
 }

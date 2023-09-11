@@ -1,25 +1,22 @@
 import React from 'react'
-import Button from './UI/Button'
+import CustomSelect from './UI/CustomSelect'
+import CustomButton from './UI/CustomButton'
 import '../styles/Categories.css'
 
 function Categories({ setActiveCategory, categories, activeCategory }) {
   return (
     <div className="lmj-categories">
-      <select
+      <CustomSelect
+        options={categories}
         value={activeCategory}
-        onChange={(e) => setActiveCategory(e.target.value)}
-        className="lmj-categories-select"
+        onChangeHandler={setActiveCategory}
+      />
+      <CustomButton
+        variant="secondary"
+        onClickHandler={() => setActiveCategory('')}
       >
-        <option value="">---</option>
-        {categories.map((cat) => (
-          <option key={cat} value={cat}>
-            {cat}
-          </option>
-        ))}
-      </select>
-      <Button variant="secondary" onClickHandler={() => setActiveCategory('')}>
         Réinitialiser
-      </Button>
+      </CustomButton>
     </div>
   )
 }
