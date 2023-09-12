@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import plantList from '../datas/plantList'
 import PlantItem from './PlantItem'
 import Categories from './Categories'
-import CustomButton from './UI/CustomButton'
 import '../styles/ShoppingList.css'
 
 function ShoppingList({ cart, updateCart }) {
@@ -13,20 +12,23 @@ function ShoppingList({ cart, updateCart }) {
     []
   )
 
-  function addToCart(name, price) {
-    const currentPlantAdded = cart.find((plant) => plant.name === name)
-    if (currentPlantAdded) {
-      const cartFilteredCurrentPlant = cart.filter(
-        (plant) => plant.name !== name
-      )
-      updateCart([
-        ...cartFilteredCurrentPlant,
-        { name, price, amount: currentPlantAdded.amount + 1 }
-      ])
-    } else {
-      updateCart([...cart, { name, price, amount: 1 }])
-    }
-  }
+  const handleAddToCart = useCallback(
+    (name, price) => {
+      const currentPlantAdded = cart.find((plant) => plant.name === name)
+      if (currentPlantAdded) {
+        const cartFilteredCurrentPlant = cart.filter(
+          (plant) => plant.name !== name
+        )
+        updateCart([
+          ...cartFilteredCurrentPlant,
+          { name, price, amount: currentPlantAdded.amount + 1 }
+        ])
+      } else {
+        updateCart([...cart, { name, price, amount: 1 }])
+      }
+    },
+    [cart, updateCart]
+  )
 
   return (
     <div className="lmj-shopping-list">
@@ -37,24 +39,21 @@ function ShoppingList({ cart, updateCart }) {
       />
 
       <ul className="lmj-plant-list">
-        {plantList.map(({ id, cover, name, water, light, price, category }) =>
-          !activeCategory || activeCategory === category ? (
-            <div key={id}>
-              <PlantItem
-                cover={cover}
-                name={name}
-                water={water}
-                light={light}
-                price={price}
-              />
-              <CustomButton
-                variant="primary"
-                onClickHandler={() => addToCart(name, price)}
-              >
-                Ajouter
-              </CustomButton>
-            </div>
-          ) : null
+        {plantList.map(
+          ({ id, cover, name, price, description, water, light, category }) =>
+            !activeCategory || activeCategory === category ? (
+              <li key={id}>
+                <PlantItem
+                  cover={cover}
+                  name={name}
+                  price={price}
+                  description={description}
+                  water={water}
+                  light={light}
+                  addToCart={handleAddToCart}
+                />
+              </li>
+            ) : null
         )}
       </ul>
     </div>

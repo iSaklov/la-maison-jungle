@@ -2,18 +2,31 @@
   color: black;
   text-align: right;
   padding: 32px;
-  border-bottom: solid 3px black;
+  border-bottom: solid 3px #fafbfc;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
   align-items: center;
+  background-image: url('../assets/jungle.webp');
 }
 
 .lmj-title {
-  padding-left: 32px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  color: #9cda82;
+  background-color: #bbe5a7;
+  background: linear-gradient(35deg, #7b849b, #979eb0);
+  text-shadow:
+    1px 3px 0 #969696,
+    1px 13px 5px #aba8a8;
+  padding: 10px 20px;
+  margin-left: 1rem;
+  border-radius: 6px;
 }
 
 .lmj-logo {
-  height: 45px;
-  width: 45px;
+  height: 100px;
+  width: 100px;
 }

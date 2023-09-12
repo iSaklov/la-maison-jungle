@@ -17,7 +17,7 @@ function Cart({ cart, updateCart }) {
       {cart.length > 0 ? (
         <div>
           <h2>Panier</h2>
-          <ul>
+          <ul className="lmj-cart-list">
             {cart.map(({ name, price, amount }) => (
               <div key={`${name}-${amount}`}>
                 {name} {price}€ x {amount}
@@ -25,6 +25,7 @@ function Cart({ cart, updateCart }) {
             ))}
           </ul>
           <h3>Total :{total}€</h3>
+          <CustomButton variant="primary">Régler la commande</CustomButton>
           <CustomButton
             variant="secondary"
             onClickHandler={() => updateCart([])}
@@ -33,7 +34,7 @@ function Cart({ cart, updateCart }) {
           </CustomButton>
         </div>
       ) : (
-        <div>Votre panier est vide</div>
+        <div className="lmj-empty-cart">Votre panier est vide :-(</div>
       )}
     </div>
   ) : (
