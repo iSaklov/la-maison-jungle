@@ -16,7 +16,7 @@ function Modal({ isShowing, hide, children }) {
             role="dialog"
           >
             <div className="modal">
-              <div className="modal-header">
+              <div className="modal-close-btn">
                 <CustomButton
                   variant="secondary"
                   onClickHandler={hide}

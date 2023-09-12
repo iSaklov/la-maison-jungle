@@ -5,10 +5,12 @@
   margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  transition: transform 0.2s ease;
 }
 
 .lmj-card:hover {
   cursor: pointer;
+  transform: scale(1.02);
 }
 
 .lmj-card-image {
@@ -56,6 +58,10 @@
   max-height: 60px;
   overflow: hidden;
   line-height: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .lmj-card-actions {

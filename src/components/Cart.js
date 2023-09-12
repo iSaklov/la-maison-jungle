@@ -3,7 +3,7 @@ import CustomButton from './UI/CustomButton'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const total = cart.reduce(
     (acc, plantType) => acc + plantType.amount * plantType.price,
     0
@@ -24,7 +24,7 @@ function Cart({ cart, updateCart }) {
               </div>
             ))}
           </ul>
-          <h3>Total :{total}€</h3>
+          <h3>Total : {total}€</h3>
           <CustomButton variant="primary">Régler la commande</CustomButton>
           <CustomButton
             variant="secondary"
@@ -34,7 +34,9 @@ function Cart({ cart, updateCart }) {
           </CustomButton>
         </div>
       ) : (
-        <div className="lmj-empty-cart">Votre panier est vide :-(</div>
+        <div className="lmj-empty-cart">
+          <p>Votre panier est vide :-(</p>
+        </div>
       )}
     </div>
   ) : (

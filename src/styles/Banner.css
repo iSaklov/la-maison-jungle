@@ -15,9 +15,9 @@
   font-weight: 700;
   font-size: 2.25rem;
   text-transform: uppercase;
-  color: #9cda82;
+  color: #f07012;
   background-color: #bbe5a7;
-  background: linear-gradient(35deg, #7b849b, #979eb0);
+  background-image: linear-gradient(315deg, #bbe5a7 0%, #9cda82 74%);
   text-shadow:
     1px 3px 0 #969696,
     1px 13px 5px #aba8a8;
